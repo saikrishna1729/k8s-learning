@@ -8,29 +8,81 @@ A beginner's guide to working through this repository in the right order with cl
 
 **⏱️ 30 minutes | 🎯 Essential Foundation**
 
-Before diving into practical Kubernetes, spend 30 minutes reading the foundational concepts in **[Module 00: Getting Started](./00-getting-started/)**. This explains:
+Before diving into practical Kubernetes, spend 30 minutes reading the foundational concepts in **[Module 00: Getting Started](./00-getting-started/)**. 
+
+**Also:** Follow **[LOCAL-SETUP.md](./00-getting-started/LOCAL-SETUP.md)** (15-20 min) to set up your local cluster first.
+
+### What Module 00 Covers:
 
 1. **What is Kubernetes?** — Why would you use it? Problem it solves.
-2. **What is Docker & Containers?** — Difference between Docker and Kubernetes.
+2. **What is Docker & Containers?** — Difference between Docker and Kubernetes. (Don't worry if you're new to Docker—it's all explained here)
 3. **What is a Pod?** — Kubernetes' atomic unit. How it differs from containers.
 4. **What is kubectl?** — The command-line tool you use to manage Kubernetes.
 5. **Kubernetes Architecture** — Control Plane vs Worker Nodes. How they work together.
 6. **YAML Explained** — The configuration format you'll use constantly.
 
-**Why start here?** When you read "Pod" in Module 01, you'll already understand what it is. When you write YAML, you'll know what each field means.
+**Why this order?** When you read "Pod" in Module 01, you'll already understand what it is. When you write YAML, you'll know what each field means.
 
-**⏭️ After reading, come back here and start Phase 1.**
+**⏭️ Reading Order:**
+1. [LOCAL-SETUP.md](./00-getting-started/LOCAL-SETUP.md) — Get your cluster running
+2. [00-getting-started/](./00-getting-started/) — Read the 6 guides (30 min)
+3. Come back here and start Phase 1
 
 ---
 
-## 🎯 Prerequisites
+## 🎯 Prerequisites: What You Actually Need
 
-Before starting, ensure you have:
-- **kubectl** (v1.28+) — `kubectl version --client`
-- **Helm** (v3.x) — `helm version`
-- **Docker** (understanding of containers) — basic `docker run` knowledge
-- **Local K8s cluster** — OrbStack, minikube, or kind
-  - Verify: `kubectl cluster-info`
+### Before starting, set up your environment:
+
+**1️⃣ Install a local Kubernetes cluster (pick ONE):**
+- **OrbStack** (macOS, paid, easiest) — `orbstack start`
+- **Minikube** (macOS/Linux/Windows, free) — `minikube start`
+- **Kind** (macOS/Linux/Windows, free, lightweight) — `kind create cluster`
+
+👉 **[👉 Detailed setup guide: LOCAL-SETUP.md](./00-getting-started/LOCAL-SETUP.md)** (15-20 min)
+
+**2️⃣ Verify your cluster is running:**
+```bash
+kubectl cluster-info
+# You should see:
+# Kubernetes control plane is running at https://...
+# CoreDNS is running at https://...
+
+kubectl get nodes
+# You should see:
+# NAME          STATUS   ROLES           AGE   VERSION
+# minikube      Ready    control-plane   5m    v1.28.x
+```
+
+**3️⃣ Install kubectl and Helm:**
+```bash
+# macOS
+brew install kubectl helm
+
+# Linux
+curl -LO "https://dl.k8s.io/release/stable.txt" && ...
+(See LOCAL-SETUP.md for full commands)
+
+# Windows
+choco install kubernetes-cli kubernetes-helm
+```
+
+**4️⃣ Verify all tools work:**
+```bash
+kubectl version --client
+# Output: Client Version: v1.28.x
+
+helm version
+# Output: version.BuildInfo{Version:"v3.x.x", ...}
+```
+
+### What about Docker knowledge?
+
+Don't worry if you've never used Docker. Module 00 explains it. Just knowing that:
+- Docker containers = packages your app
+- Kubernetes runs those containers
+
+Is enough to start.
 
 ---
 

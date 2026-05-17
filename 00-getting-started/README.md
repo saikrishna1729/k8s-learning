@@ -50,6 +50,16 @@ You'll understand:
 
 ---
 
+## 🛠️ Before You Start
+
+You'll need a local Kubernetes cluster running (OrbStack, Minikube, or Kind).
+
+👉 **[👉 Local Cluster Setup Guide](./LOCAL-SETUP.md)** (15-20 min) — Follow this first if you don't have a cluster yet.
+
+**Already have kubectl working?** Then you're ready. Start reading below.
+
+---
+
 ## 🎯 Quick Summary (For Impatient People)
 
 **Kubernetes in 30 seconds:**

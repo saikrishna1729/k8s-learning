@@ -23,14 +23,24 @@
 
 ## 🛠️ Local Setup
 
+You need a local Kubernetes cluster to run the hands-on modules. **[👉 Detailed setup guide here](./00-getting-started/LOCAL-SETUP.md)** (15-20 min)
+
+**Quick start (macOS with OrbStack):**
 ```bash
-# Prerequisites
+# Install tools
 brew install kubectl helm orbstack
 
-# Verify cluster
-kubectl cluster-info
-kubectl get nodes
+# Start cluster
+orbstack start
+
+# Verify it works
+kubectl cluster-info    # Shows: Kubernetes control plane is running
+kubectl get nodes       # Shows: 1 node Ready
 ```
+
+**Other options:**
+- **macOS/Linux/Windows:** Use Minikube or Kind instead (free)
+- **New to this?** Follow [LOCAL-SETUP.md](./00-getting-started/LOCAL-SETUP.md) — it walks through all three options step-by-step
 
 ## 📋 Key Commands Cheatsheet
 

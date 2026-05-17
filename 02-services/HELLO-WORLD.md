@@ -34,22 +34,49 @@ kubectl describe service hello-world-service
 
 ## Step 2: Verify Service DNS Resolves Inside the Cluster
 
+### Why test from inside a Pod?
+
+Services are **internal-only by default**. They only have DNS names inside the cluster. From your computer, you can't reach them. We create a temporary test Pod to prove the Service DNS works from inside the cluster.
+
+### Create a test Pod and access the Service:
+
 ```bash
-# Launch a test Pod to verify DNS
-kubectl run -it test-pod --image=nginx:1.25 -- /bin/bash
+# Launch a temporary test Pod
+kubectl run -it test-pod --image=ubuntu:latest -- /bin/bash
 
-# Inside the test Pod, test DNS resolution
+# You're now INSIDE the test Pod (notice the new prompt)
+# Install tools to test the Service
+apt-get update && apt-get install -y curl dnsutils
+
+# Test 1: Check if DNS resolves
+# (nslookup looks up hostnames and returns IP addresses)
 nslookup hello-world-service
+# You should see:
+# Name: hello-world-service
+# Address: 10.x.x.x (some internal IP)
 
-# You should see the Service's internal IP
-# Try to access the Service
+# Test 2: Try to access the Service via HTTP
+# (curl makes HTTP requests, like visiting a website)
 curl http://hello-world-service
+# You should see the nginx welcome page (HTML)
 
-# You should get the nginx welcome page
+# Test 3: Same test but with the full DNS name
+curl http://hello-world-service.default.svc.cluster.local
+# Should also work
+
+# Exit the test Pod
 exit
 ```
 
-**Key Learning:** Services provide stable DNS even though underlying Pod IPs change.
+**Key Learning:** Services provide stable DNS names inside the cluster, even though underlying Pod IPs change.
+
+### What just happened?
+
+1. We created a temporary Pod running Ubuntu
+2. Inside that Pod, we used `nslookup` to look up the Service's IP address
+3. We used `curl` to make HTTP requests to the Service
+4. The Service load-balanced our request to one of the backend Pods
+5. We exited, and the test Pod was deleted (it was temporary)
 
 ---
 

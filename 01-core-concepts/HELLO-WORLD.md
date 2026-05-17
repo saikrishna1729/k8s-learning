@@ -29,17 +29,18 @@ kubectl logs hello-world-pod
 
 ---
 
-## Step 2: Kill the Pod and Watch It Restart
+## Step 2: Kill the Pod and Watch It NOT Restart
 
 ```bash
-# Delete the pod
+# Delete the pod (bye forever!)
 kubectl delete pod hello-world-pod
 
-# It should be gone
+# Check that it's gone
 kubectl get pods
+# Output: No resources found (it's deleted)
 ```
 
-**Observation:** Pods don't restart when deleted—they're gone forever.
+**Key Learning:** Bare Pods don't restart when deleted—they're gone forever. This is why we use Deployments (next step) which automatically create replacement Pods.
 
 ---
 
@@ -68,20 +69,28 @@ kubectl get pods
 ## Step 4: Kill a Pod and Watch the Deployment Replace It
 
 ```bash
-# List Pods
+# List Pods and their names
 kubectl get pods
+# Output:
+# NAME                          READY   STATUS    RESTARTS   AGE
+# hello-world-abc123            1/1     Running   0          2m
+# hello-world-def456            1/1     Running   0          2m
 
-# Copy a Pod name (e.g., hello-world-xyz123)
-# Delete one Pod
-kubectl delete pod hello-world-xyz123
+# Copy one of the Pod names from above (e.g., hello-world-abc123)
+# and delete it
+kubectl delete pod hello-world-abc123
 
-# Immediately check Pods again
+# Immediately list Pods again
 kubectl get pods
+# Notice: the old Pod is gone (Terminating)
+# But a NEW Pod was created! (notice new name like hello-world-ghi789)
 
-# Notice: a NEW Pod was created to replace it!
+# Keep checking for 10 seconds—see the new Pod become Ready
+kubectl get pods -w
+# Press Ctrl+C to stop watching
 ```
 
-**Key Learning:** Deployments ensure desired replicas are always running. Delete a Pod, Deployment spawns a new one.
+**Key Learning:** Deployments maintain desired replicas. When you delete a Pod, Deployment automatically creates a replacement. This is why Deployments are better than bare Pods.
 
 ---
 
