@@ -1,0 +1,29 @@
+replicaCount: 2
+image:
+  repository: nginx
+  tag: "1.25"
+  pullPolicy: IfNotPresent
+service:
+  type: LoadBalancer
+  port: 80
+  targetPort: 80
+ingress:
+  enabled: true
+  className: nginx
+  host: staging.myapp.local
+  tls: false
+resources:
+  requests:
+    cpu: "100m"
+    memory: "128Mi"
+  limits:
+    cpu: "200m"
+    memory: "256Mi"
+config:
+  logLevel: info
+  maxConnections: 50
+  dbHost: postgres-service
+autoscaling:
+  enabled: false
+postgresql:
+  enabled: false

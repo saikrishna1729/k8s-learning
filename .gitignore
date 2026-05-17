@@ -1,0 +1,12 @@
+# Never commit real secrets!
+*secret*.yaml
+*secrets*.yaml
+values-prod-real.yaml
+
+# Helm
+*.tgz
+charts/*.tgz
+
+# OS
+.DS_Store
+*.swp

@@ -1,0 +1,35 @@
+replicaCount: 10
+image:
+  repository: nginx
+  tag: "1.25"
+  pullPolicy: IfNotPresent
+service:
+  type: LoadBalancer
+  port: 80
+  targetPort: 80
+ingress:
+  enabled: true
+  className: nginx
+  host: myapp.local
+  tls: false
+resources:
+  requests:
+    cpu: "200m"
+    memory: "256Mi"
+  limits:
+    cpu: "500m"
+    memory: "512Mi"
+config:
+  logLevel: warn
+  maxConnections: 100
+  dbHost: postgres-service
+autoscaling:
+  enabled: true
+  minReplicas: 10
+  maxReplicas: 50
+  targetCPUUtilizationPercentage: 80
+postgresql:
+  enabled: true
+  auth:
+    database: myappdb
+    username: myapp
