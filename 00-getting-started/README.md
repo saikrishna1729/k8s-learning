@@ -6,6 +6,16 @@
 
 ---
 
+## 🛠️ Before You Start: Set Up Your Local Cluster
+
+You'll need a local Kubernetes cluster to follow the hands-on examples in this course.
+
+👉 **[👉 Follow: LOCAL-SETUP.md](./LOCAL-SETUP.md)** (15-20 min) for step-by-step installation guide.
+
+**Already have kubectl running?** (Check: `kubectl cluster-info`) Then skip to "What You'll Learn" below.
+
+---
+
 ## 📚 What You'll Learn
 
 This section answers the questions a complete beginner asks:
@@ -47,16 +57,6 @@ You'll understand:
 - ✅ What kubectl is and why you need it
 
 **Then you're ready for Module 01: Core Concepts.**
-
----
-
-## 🛠️ Before You Start
-
-You'll need a local Kubernetes cluster running (OrbStack, Minikube, or Kind).
-
-👉 **[👉 Local Cluster Setup Guide](./LOCAL-SETUP.md)** (15-20 min) — Follow this first if you don't have a cluster yet.
-
-**Already have kubectl working?** Then you're ready. Start reading below.
 
 ---
 
