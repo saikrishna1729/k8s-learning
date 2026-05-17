@@ -1,0 +1,16 @@
+apiVersion: v2
+name: microservices-app
+description: A complete 3-tier microservices application (frontend, backend, database)
+type: application
+version: 1.0.0
+appVersion: "1.0.0"
+maintainers:
+- name: Learning
+  email: learning@example.com
+keywords:
+- microservices
+- kubernetes
+- helm
+home: https://github.com/example/microservices-app
+sources:
+- https://github.com/example/microservices-app

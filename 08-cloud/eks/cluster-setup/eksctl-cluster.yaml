@@ -1,0 +1,44 @@
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+
+metadata:
+  name: my-cluster
+  region: eu-west-1
+  version: "1.28"
+
+nodeGroups:
+  - name: nodes
+    desiredCapacity: 2
+    minSize: 1
+    maxSize: 5
+    instanceType: t3.medium
+    spotPrice: ""
+    volumeSize: 30
+    volumeType: gp3
+    privateNetworking: true
+    tags:
+      Environment: dev
+    labels:
+      Environment: dev
+
+vpc:
+  cidr: 10.0.0.0/16
+  maxNetworkInterfaces: 3
+  nat:
+    gateway: HighlyAvailable
+
+addons:
+  - name: vpc-cni
+    version: latest
+    attachPolicyARNs:
+      - arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy
+  - name: coredns
+    version: latest
+  - name: kube-proxy
+    version: latest
+  - name: ebs-csi-driver
+    version: latest
+    attachPolicyARNs:
+      - arn:aws:iam::aws:policy/service-role/AmazonEBSCSIDriverPolicy
+
+iamWithOIDC: true

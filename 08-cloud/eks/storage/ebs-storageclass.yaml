@@ -1,0 +1,46 @@
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: ebs-gp3
+  annotations:
+    storageclass.kubernetes.io/is-default-class: "true"
+provisioner: ebs.csi.aws.com
+allowVolumeExpansion: true
+parameters:
+  type: gp3
+  iops: "3000"
+  throughput: "125"
+  encrypted: "true"
+  kms-key-id: arn:aws:kms:eu-west-1:123456789012:key/12345678-1234-1234-1234-123456789012
+  delete-on-termination: "true"
+reclaimPolicy: Delete
+volumeBindingMode: WaitForFirstConsumer
+---
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: ebs-gp2
+provisioner: ebs.csi.aws.com
+allowVolumeExpansion: true
+parameters:
+  type: gp2
+  iops: "100"
+  throughput: "125"
+  encrypted: "true"
+  delete-on-termination: "true"
+reclaimPolicy: Delete
+volumeBindingMode: WaitForFirstConsumer
+---
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: ebs-io1
+provisioner: ebs.csi.aws.com
+allowVolumeExpansion: true
+parameters:
+  type: io1
+  iops: "1000"
+  encrypted: "true"
+  delete-on-termination: "true"
+reclaimPolicy: Delete
+volumeBindingMode: WaitForFirstConsumer

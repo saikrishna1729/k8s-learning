@@ -1,0 +1,67 @@
+namespace: microservices-app-prod
+
+frontend:
+  replicaCount: 5
+  resources:
+    requests:
+      cpu: 100m
+      memory: 128Mi
+    limits:
+      cpu: 500m
+      memory: 512Mi
+  autoscaling:
+    enabled: true
+    minReplicas: 5
+    maxReplicas: 50
+    targetCPUUtilizationPercentage: 70
+
+backend:
+  replicaCount: 5
+  resources:
+    requests:
+      cpu: 200m
+      memory: 256Mi
+    limits:
+      cpu: 1000m
+      memory: 1Gi
+  autoscaling:
+    enabled: true
+    minReplicas: 5
+    maxReplicas: 50
+    targetCPUUtilizationPercentage: 75
+
+postgres:
+  enabled: true
+  persistence:
+    enabled: true
+    storageClass: ebs-gp3
+    size: 100Gi
+
+config:
+  log_level: warn
+
+secrets:
+  database_password: "override-with-secure-prod-password"
+  api_key: "override-with-prod-api-key"
+
+ingress:
+  enabled: true
+  className: nginx
+  annotations:
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+  hosts:
+    - host: myapp.example.com
+      paths:
+        - path: /
+          pathType: Prefix
+  tls:
+    - secretName: myapp-tls
+      hosts:
+        - myapp.example.com
+
+networkPolicies:
+  enabled: true
+
+rbac:
+  create: true

@@ -12,11 +12,11 @@
 | 03 | [Ingress](./03-ingress/) | Path/Host routing, TLS, Controllers | ✅ Done |
 | 04 | [Config Management](./04-config/) | ConfigMaps, Secrets | ✅ Done |
 | 05 | [Helm](./05-helm/) | Charts, Values, Releases, Rollbacks | ✅ Done |
-| 06 | [Scaling](./06-scaling/) | HPA, VPA, Cluster Autoscaler | 🔜 Next |
-| 07 | [Observability](./07-observability/) | Prometheus, Grafana, Logging | 🔜 Next |
-| 08 | [Cloud](./08-cloud/) | EKS, GKE, AKS | 🔜 Next |
-| 09 | [Security](./09-security/) | RBAC, Network Policies | 🔜 Next |
-| 10 | [Projects](./10-projects/) | Real-world microservices app | 🔜 Next |
+| 06 | [Scaling](./06-scaling/) | HPA, VPA, Cluster Autoscaler | ✅ Done |
+| 07 | [Observability](./07-observability/) | Prometheus, Grafana, Logging | ✅ Done |
+| 08 | [Cloud](./08-cloud/) | EKS, AKS, GKE | ✅ Done |
+| 09 | [Security](./09-security/) | RBAC, Network Policies, PSA | ✅ Done |
+| 10 | [Projects](./10-projects/) | Real-world microservices app | ✅ Done |
 
 ## 🛠️ Local Setup
 
