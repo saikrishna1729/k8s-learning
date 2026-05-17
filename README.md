@@ -5,8 +5,11 @@
 
 ## 🗺️ Learning Roadmap
 
+**👉 Start Here:** Read [**00-getting-started/**](./00-getting-started/) first (30 min) for foundational concepts before diving into modules.
+
 | # | Module | Topics | Status |
 |---|--------|--------|--------|
+| 00 | [Getting Started](./00-getting-started/) | What is K8s, Docker, Pods, kubectl, Architecture, YAML | ✅ Done |
 | 01 | [Core Concepts](./01-core-concepts/) | Pods, Deployments, ReplicaSets | ✅ Done |
 | 02 | [Services](./02-services/) | ClusterIP, NodePort, LoadBalancer | ✅ Done |
 | 03 | [Ingress](./03-ingress/) | Path/Host routing, TLS, Controllers | ✅ Done |

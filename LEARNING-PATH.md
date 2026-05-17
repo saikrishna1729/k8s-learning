@@ -4,6 +4,25 @@ A beginner's guide to working through this repository in the right order with cl
 
 ---
 
+## 📖 Start Here: Getting Started (Module 00)
+
+**⏱️ 30 minutes | 🎯 Essential Foundation**
+
+Before diving into practical Kubernetes, spend 30 minutes reading the foundational concepts in **[Module 00: Getting Started](./00-getting-started/)**. This explains:
+
+1. **What is Kubernetes?** — Why would you use it? Problem it solves.
+2. **What is Docker & Containers?** — Difference between Docker and Kubernetes.
+3. **What is a Pod?** — Kubernetes' atomic unit. How it differs from containers.
+4. **What is kubectl?** — The command-line tool you use to manage Kubernetes.
+5. **Kubernetes Architecture** — Control Plane vs Worker Nodes. How they work together.
+6. **YAML Explained** — The configuration format you'll use constantly.
+
+**Why start here?** When you read "Pod" in Module 01, you'll already understand what it is. When you write YAML, you'll know what each field means.
+
+**⏭️ After reading, come back here and start Phase 1.**
+
+---
+
 ## 🎯 Prerequisites
 
 Before starting, ensure you have:
