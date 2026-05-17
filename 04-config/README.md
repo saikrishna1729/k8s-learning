@@ -1,5 +1,20 @@
 # 🔐 04 - Config Management
 
+> **This module separates configuration from code.** Run the same app image in dev, staging, and prod with different configs.
+
+## ⏱️ Estimated Time: 2 hours | Difficulty: ⭐ Beginner
+
+## 🎯 Problem This Solves
+
+From Module 03: Your app works, but it's hardcoded for **one environment**. In production, you need different database URLs, API keys, and feature flags per environment—without rebuilding the Docker image.
+
+**Answer:** ConfigMaps (configs) + Secrets (sensitive data) + PersistentVolumes (databases).
+
+## 📋 Prerequisites
+
+- Modules 01-03 (Pods, Services, Ingress)
+- kubectl access
+
 ## ConfigMap vs Secret
 - ConfigMap = non-sensitive config (stored as plain text in etcd)
 - Secret = sensitive config (stored as base64 in etcd)
@@ -34,3 +49,11 @@
 - `configmaps/` — ConfigMap examples
 - `secrets/` — Secret examples
 - `storage/` — PV, PVC, StorageClass examples (local, dynamic, StatefulSet)
+
+## 🔗 How This Connects to Module 05
+
+After this module, you can deploy apps with different configs per environment. But **you're still copy-pasting YAML files** for dev/staging/prod.
+
+**Module 05 (Helm)** solves this: it packages your app as a reusable chart with templated configs so you deploy with a single command.
+
+👉 **Next: [Module 05 — Helm](../05-helm/)**

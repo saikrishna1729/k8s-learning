@@ -1,5 +1,21 @@
 # 🔐 Security
 
+> **This module locks down your cluster.** Only authorized Pods access what they need, and traffic between Pods is explicitly allowed.
+
+## ⏱️ Estimated Time: 2 hours | Difficulty: ⭐⭐⭐ Advanced
+
+## 🎯 Problem This Solves
+
+From Module 08: Your app is in the cloud. But **it's wide open**—any Pod can talk to any other Pod, default ServiceAccounts have excess permissions, and anyone with `kubectl` access can read Secrets.
+
+**Answer:** RBAC (who can do what), Network Policies (which Pods can talk), Pod Security Admission (container hardening).
+
+## 📋 Prerequisites
+
+- Modules 01-08 (full stack + cloud deployment)
+- kubectl access to a cluster
+- Understanding of least-privilege principle
+
 ## Key Concepts
 
 - **RBAC (Role-Based Access Control)** — Defines who can do what in Kubernetes. Uses Roles (namespace-scoped) and ClusterRoles (cluster-wide), bound to ServiceAccounts, Users, or Groups.
@@ -44,3 +60,11 @@ kubectl label namespace default pod-security.kubernetes.io/enforce=baseline --ov
 kubectl label namespace default pod-security.kubernetes.io/audit=restricted --overwrite
 kubectl label namespace default pod-security.kubernetes.io/warn=restricted --overwrite
 ```
+
+## 🔗 How This Connects to Module 10
+
+After this module, you understand all the pieces: networking, storage, scaling, observability, cloud, and security.
+
+**Module 10 (Projects)** is the capstone—a 3-tier microservices app that integrates ALL concepts from modules 01-09. You'll deploy it locally first, then to the cloud.
+
+👉 **Next: [Module 10 — Projects](../10-projects/)**

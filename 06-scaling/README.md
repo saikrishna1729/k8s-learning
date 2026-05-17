@@ -1,5 +1,20 @@
 # 📈 Scaling
 
+> **This module handles traffic surges automatically.** Your app scales horizontally (more Pods) and vertically (bigger nodes) without manual intervention.
+
+## ⏱️ Estimated Time: 1-2 hours | Difficulty: ⭐⭐ Intermediate
+
+## 🎯 Problem This Solves
+
+From Module 05: Your app is deployed and working. Then a traffic spike hits—your 2 Pod replicas are maxed out, users see slowness/timeouts. **You need automation.**
+
+**Answer:** HPA scales Pods, Cluster Autoscaler scales nodes, all based on metrics.
+
+## 📋 Prerequisites
+
+- Modules 01-05 (full stack)
+- kubectl access to a cluster with metrics-server (auto-installed in cloud services)
+
 ## Key Concepts
 
 - **Horizontal Pod Autoscaler (HPA)** — Automatically scales the number of replicas based on metrics (CPU, memory, custom metrics). Requires metrics-server to gather data.
@@ -36,3 +51,11 @@ kubectl describe vpa my-vpa
 # Scale manually (for testing)
 kubectl scale deployment my-app --replicas 5
 ```
+
+## 🔗 How This Connects to Module 07
+
+After this module, your app auto-scales. But **you can't see what's happening**—is it scaling for the right reason? Is there a memory leak? Are users experiencing slowness?
+
+**Module 07 (Observability)** solves this: it shows metrics (Prometheus), dashboards (Grafana), and logs to understand what's really happening.
+
+👉 **Next: [Module 07 — Observability](../07-observability/)**

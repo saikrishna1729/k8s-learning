@@ -1,5 +1,21 @@
 # 📊 Observability
 
+> **This module makes your infrastructure visible.** See metrics, logs, and events to understand what's happening and catch problems before users report them.
+
+## ⏱️ Estimated Time: 1-2 hours | Difficulty: ⭐⭐ Intermediate
+
+## 🎯 Problem This Solves
+
+From Module 06: Your app auto-scales. But **how do you know if it's healthy?** Is CPU actually high or is something else wrong? Are database connections leaking? Did that deploy cause a latency spike?
+
+**Answer:** Prometheus metrics, Grafana dashboards, and aggregated logs.
+
+## 📋 Prerequisites
+
+- Modules 01-06 (full stack with scaling)
+- kubectl access to a cluster
+- Helm (for installing Prometheus/Grafana)
+
 ## Key Concepts
 
 - **Metrics** — Time-series data (CPU, memory, request count). Prometheus scrapes targets and stores them. Queryable via PromQL.
@@ -45,3 +61,11 @@ kubectl logs -f deployment/my-app -n default
 # Stream logs from multiple pods
 kubectl logs -f -l app=my-app -n default --all-containers=true
 ```
+
+## 🔗 How This Connects to Module 08
+
+After this module, your app is production-ready locally. But **local clusters are for learning**—you need a real, managed Kubernetes service.
+
+**Module 08 (Cloud)** covers EKS (AWS), AKS (Azure), and GKE (Google)—managed services that handle control plane, backups, and multi-zone resilience.
+
+👉 **Next: [Module 08 — Cloud](../08-cloud/)**
